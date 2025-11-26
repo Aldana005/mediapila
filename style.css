@@ -1,7 +1,11 @@
+
 body {
-  background-color: #b5b5ef !important;
+    background-color: #0d0d0d;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* página ingresar usuario */
 .full-height-custom {
   min-height: 100vh;
 }
@@ -20,22 +24,77 @@ body {
   user-select: none;
 }
 
-.fondoSecciones{
-  background-color: #8497bb !important;
+/* ======= SECCIONES ======= */
+
+.fondoSecciones {
+    background-color: #1e1e1e;
+    box-shadow: none;
+}
+
+/* =======  USUARIO ======= */
+.dropdown-toggle {
+    background-color: #a685e2 !important;
+    color: white !important;
+    border: none;
+}
+
+.dropdown-menu {
+    background-color: #3a3a3a;
+}
+
+.dropdown-item:hover {
+    background-color: #a685e2;
+    color: white;
+}
+
+/* Enlace Agregar tarea */
+.col-2 a {
+    color: #a685e2;
+}
+
+.col-2 a:hover {
+    color: #c7b0f0;
+}
+
+/* ======= NAVBAR ======= */
+.navbar {
+    background-color: #a685e2 !important;
 }
 
 
-.seccionResaltada{
-    background-color: #5d7599;
-}
+/* ======= FECHAS ======= */
 
 .circuloFecha {
-    width: 60px;
-    height: 60px;
+    background-color: #3a3a3a;
+    color: white;
+    border: 8px solid #a685e2 !important; 
+    transition: 0.2s ease;
 }
 
-.dias{
-  background-color:#6883ac;
-  width: 50px;           
-  height: 50px;
+.circuloFecha:hover {
+    background-color: #a685e2;
+    border-color: #ffffff !important;
+}
+
+.colorLila{
+    color: #a685e2;
+}
+
+
+/* ===== Flechas ===== */
+.btn-light {
+    background-color: #bfbfbf !important;
+    color: #6a4fb9 !important;
+    border: none;
+    transition: 0.2s ease;
+}
+
+.btn-light:hover {
+    background-color: #a685e2 !important;
+    color: white !important;
+}
+
+/* Boton resaltado */
+.seccionResaltada {
+    background-color: #a685e2;
 }
