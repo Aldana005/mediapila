@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+        <!-- iconos de boostrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <!-- Barra lateral izquierda -->
+                <div class="col-2 p-2 min-vh-100">
+                    <div class="me-auto rounded-5 fondoSecciones">
+                        <div class="dropdown text-center">
+                            <button class="btn dropdown-toggle fs-3 w-100 rounded-top fondoUsuario" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person"></i> 
+                                Usuario  
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">
+                                        <a href="index.html">Cerrar Sesión</a>
+                                    </a></li>
+                            </ul>
+                        </div>
+
+                        <div class="container vh-100 fs-5 py-5">
+                            <a href="" class="text-decoration-none"> <i class="bi bi-plus-circle-fill "></i> </a>
+                            <span>Agregar Tarea</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-10 py-2">
+                    <nav class="navbar bg-body-tertiary rounded fondoSecciones">
+                        <a class="navbar-brand ms-auto" href="#">
+                            Irupé
+
+                            <!-- esta imagen tenemos que cambiarla, hacerla sin el fondo negro -->
+                            <img src="img/imgLogo.jpeg" alt="Logo" width="50" height="30" class="d-inline-block align-text-top">
+                        </a>
+                    </nav>
+
+
+                    <!-- parte derecha, fechas -->
+                    <div class="container-fluid">
+                        <div>
+                            <h2 class="text-center">MES ACTUAL</h2>
+                        </div>
+
+                        <div>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                    <a class="page-link"><i class="bi bi-arrow-left"></i></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">23</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">24</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">25</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">26</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">27</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">28</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">29 </a></li>
+                                    <li class="page-item">
+                                    <a class="page-link" href="#"><i class="bi bi-arrow-right"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    </body>
+
+    
+</html>

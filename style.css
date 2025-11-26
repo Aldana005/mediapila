@@ -1,8 +1,30 @@
-body{
-    background-color: rgb(178, 186, 186);
+body {
+  background-color: #b5b5ef !important;
+}
+
+.full-height-custom {
+  min-height: 100vh;
+}
+
+
+.btn-primary {
+  --bs-btn-bg: #c7a9e3; 
+  --bs-btn-border-color: #8a2be2;
+  --bs-btn-hover-bg: #6a1ba5; 
+  --bs-btn-hover-border-color: #6a1ba5;
+  --bs-btn-color: #151515;
 }
 
 /* para que texto de bienvenida no sea seleccionable */
 .no-seleccionable {
   user-select: none;
+}
+
+.fondoSecciones{
+  background-color: #8497bb !important;
+}
+
+
+.fondoUsuario{
+    background-color: #5d7599;
 }
