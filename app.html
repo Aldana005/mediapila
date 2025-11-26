@@ -34,9 +34,13 @@
                         </div>
 
                         <div class="container vh-100 fs-4 py-5">
-                            <a href="" class="text-decoration-none"> <i class="bi bi-plus-circle-fill "></i> </a>
+                            <a href="#modalTarea" class="text-decoration-none" data-bs-toggle="modal" 
+                                data-bs-target="#modalTarea">
+                                <i class="bi bi-plus-circle-fill "></i>
+                            </a>
                             <span>Agregar Tarea</span>
                         </div>
+                    
                     </div>
                 </div>
 
@@ -112,6 +116,38 @@
 
         </div>
 
+        <!-- MODAL -->
+
+        <div class="modal" id="modalTarea" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Agregar tarea</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Nombre de la tarea</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre de la tarea">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Fecha">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" placeholder="Comentario" id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Comentario</label>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
