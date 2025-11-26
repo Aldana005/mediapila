@@ -20,10 +20,10 @@
             <div class="row">
                 <!-- Barra lateral izquierda -->
                 <div class="col-2 p-2 min-vh-100">
-                    <div class="me-auto rounded-5 fondoSecciones">
+                    <div class="me-auto rounded fondoSecciones">
                         <div class="dropdown text-center">
-                            <button class="btn dropdown-toggle fs-3 w-100 rounded-top fondoUsuario" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person"></i> 
+                            <button class="btn dropdown-toggle fs-3 w-100 rounded-top seccionResaltada" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle"></i> 
                                 Usuario  
                             </button>
                             <ul class="dropdown-menu">
@@ -40,44 +40,69 @@
                     </div>
                 </div>
 
-
+                <!-- parte superior de logo y nombre -->
                 <div class="col-10 py-2">
                     <nav class="navbar bg-body-tertiary rounded fondoSecciones">
                         <a class="navbar-brand ms-auto" href="#">
                             Irupé
-
                             <!-- esta imagen tenemos que cambiarla, hacerla sin el fondo negro -->
                             <img src="img/imgLogo.jpeg" alt="Logo" width="50" height="30" class="d-inline-block align-text-top">
                         </a>
                     </nav>
 
+                    <!-- parte de fechas -->
 
-                    <!-- parte derecha, fechas -->
-                    <div class="container-fluid">
-                        <div>
-                            <h2 class="text-center">MES ACTUAL</h2>
-                        </div>
+                    <div class="container rounded mt-5 fondoSecciones">
 
-                        <div>
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item disabled">
-                                    <a class="page-link"><i class="bi bi-arrow-left"></i></a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">23</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">24</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">25</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">26</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">27</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">28</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">29 </a></li>
-                                    <li class="page-item">
-                                    <a class="page-link" href="#"><i class="bi bi-arrow-right"></i></a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+                        <h2 class="m-4 text-center">Noviembre 2025</h2>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-4 text-center mx-3">
+
+                                <button class="btn btn-light">&#8592;</button>
+
+                                <div>
+                                    <button class="btn rounded-circle p-3 seccionResaltada circuloFecha">23</button>
+                               
+                                    <div class="col rounded m-4 fs-3 dias">D</div>
+                                </div>
+
+                                <div>            
+                                    <button class="btn rounded-circle p-3 seccionResaltada circuloFecha">24</button>
+                                    <div class="col rounded m-4 fs-3 dias">L</div>
+                                </div>
+
+                                <div>
+                                    <button class="btn rounded-circle p-3 seccionResaltada circuloFecha">25</button>
+                                    <div class="col rounded m-4 fs-3 dias">M</div>
+                                </div>
+
+                                <div>
+                                    <button class="btn rounded-circle p-3 seccionResaltada circuloFecha">26</button>
+                                    <div class="col rounded m-4 fs-3 dias">M</div>
+                                </div>
+                            
+                                <div>
+                                    <button class="btn rounded-circle seccionResaltada p-3">27</button>
+                                    <div class="col rounded m-4 fs-3 dias">J</div>
+                                </div>
+
+                                <div>
+                                    <button class="btn rounded-circle seccionResaltada p-3">28</button>
+                                    <div class="col rounded m-4 fs-3 dias">V</div>
+                                </div>
+                                
+                                <div>
+                                    <button class="btn rounded-circle p-3 seccionResaltada circuloFecha">29</button>
+                                    <div class="col rounded m-4 fs-3 dias">S</div>
+                                </div>
+                                <button class="btn btn-light">&#8594;</button>
+                            </div>
+                
+                        
                     </div>
+
+                     
+                    
                 </div>
 
             </div>
