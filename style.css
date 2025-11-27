@@ -1,4 +1,3 @@
-
 body {
     background-color: #0d0d0d;
     color: white;
@@ -12,24 +11,55 @@ body {
     to { opacity: 1; }
 }
 
+/* ----PARTE BIENVENIDA---- */
+h1 .d-block {
+    /* Color de relleno (el color interior de la letra) */
+    color: transparent; 
+    /* Para el borde de las letras (outline o text-stroke) */
+    -webkit-text-stroke: 2px #ae00ff; 
+    text-shadow: 2px #edb2f7; 
+    
+    /* Otras propiedades para mejorar la apariencia */
+    font-size: 1.5em; 
+    letter-spacing: 5px; 
+    display: inline-block; 
+    animation: brilloIntermitente 2s infinite alternate; 
+    
+}
+/* --- Opciones de Animación de brillo intermitente para el color del borde--- */
+@keyframes brilloIntermitente {
+    0% {
+        -webkit-text-stroke-color: #8a2be2;; 
+        text-stroke-color: #d9a2f8;
+    }
+    50% {
+        -webkit-text-stroke-color:  #c7a9e3; ; /* brillante */
+        text-stroke-color: #ec83fa;
+    }
+    100% {
+        -webkit-text-stroke-color: #c566f8;
+        text-stroke-color: #b700ff;
+    }
+}
+
 
 /* página ingresar usuario */
 .full-height-custom {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 
 .btn-primary {
-  --bs-btn-bg: #c7a9e3; 
-  --bs-btn-border-color: #8a2be2;
-  --bs-btn-hover-bg: #6a1ba5; 
-  --bs-btn-hover-border-color: #6a1ba5;
-  --bs-btn-color: #151515;
+    --bs-btn-bg: #c7a9e3; 
+    --bs-btn-border-color: #8a2be2;
+    --bs-btn-hover-bg: #6a1ba5; 
+    --bs-btn-hover-border-color: #6a1ba5;
+    --bs-btn-color: #151515;
 }
 
 /* para que texto de bienvenida no sea seleccionable */
 .no-seleccionable {
-  user-select: none;
+    user-select: none;
 }
 
 /* ======= SECCIONES ======= */
@@ -69,7 +99,6 @@ body {
     background-color: #a685e2 !important;
 }
 
-
 /* ======= FECHAS ======= */
 
 .circuloFecha {
@@ -88,6 +117,23 @@ body {
     color: #a685e2;
 }
 
+.cardLoginLila {
+    background-color: #a685e2 !important;
+    color: #000;
+    border-color: #f8f6fa;
+}
+
+.btn-lila {
+    background-color: #271a3d;  /* Violeta oscuro */
+    border-color: #a874ff;
+    color: white;
+}
+
+.btn-lila:hover {
+    background-color: #8f79b3;  /* Violeta clarito */
+    border-color: #c6a5ff;
+    color: white;
+}
 
 /* ===== Flechas ===== */
 .btn-light {
@@ -111,8 +157,28 @@ body {
     box-shadow: 0 0 15px #ffffff55;
 }
 
-
 /* Boton resaltado */
 .seccionResaltada {
     background-color: #a685e2;
+}
+
+/* MODAL PERSONALIZADO */
+/* ========================================= */
+
+.modal-custom {
+    background-color: #c7a9e3 !important; /* lila claro */
+    border: 3px solid black !important;    /* borde negro */
+}
+
+.campoModal {
+    background-color: #e6e6e6 !important; /* gris claro */
+    border: 2px solid black !important;
+    color: black !important;
+}
+
+/* Encabezados y textos del modal */
+.modal-title,
+.modal-body label {
+    color: black !important;
+    font-weight: bold;
 }
