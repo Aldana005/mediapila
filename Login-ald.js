@@ -1,3 +1,5 @@
+
+
 // ref a elementos del form
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
@@ -11,6 +13,13 @@ const users = [
         correo: "aldanamariel005@gmail.com",
         contrasena: "grupo6.1",
         token: "tokenaldana"
+    },
+    {
+        nombre: "Silvana",
+        apellido: "Cepeda",
+        correo: "cepedasilvanagabriela@gmail.com",
+        contrasena: "1234",    
+        token: "sil123"
     }
     
 ];
@@ -18,7 +27,7 @@ const users = [
 init();
 
 function init() {
-    const token = localStorage.getItem("UsuarioAldana");
+    const token = localStorage.getItem("SesionActiva");
     if (token) {
         //direcciona a la aplicacion 
         window.location = "app.html";
@@ -35,7 +44,7 @@ boton.addEventListener("click", function() {
     if (queryUser && queryUser.contrasena === password) {
         
 
-        localStorage.setItem("UsuarioAldana", queryUser.token);
+        localStorage.setItem("SesionActiva", queryUser.token);
         window.location = "app.html";
 
     } else {
