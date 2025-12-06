@@ -1,20 +1,7 @@
-const usuarioLogeado = localStorage.getItem("SesionActiva");
+const cerrar_sesion = document.querySelector("#btnCerrarSesion")
 
-if (!usuarioLogeado) {
+cerrar_sesion.addEventListener('click', () => {
+    console.log('HOLA')
+    localStorage.removeItem('irupeApp')
 
-    window.location = "login.html";
-}
-
-
-const botonSalir = document.querySelector("#btnCerrarSesion"); 
-
-if(botonSalir) {
-    botonSalir.addEventListener("click", function() {
-        
-        
-        localStorage.removeItem("SesionActiva");
-        
-       
-        window.location = "login.html";
-    });
-}
+window.location.href = "login.html";})
