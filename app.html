@@ -60,49 +60,49 @@
                     <div class="container rounded mt-5 fondoSecciones">
                         <div class="d-flex justify-content-between align-items-center fs-1">
                             <a href="#" class="text-primary">
-                                <i class="bi bi-arrow-left"></i>
+                                <i id="flechaIzq" class="bi bi-arrow-left"></i>
                             </a>
-
-                            <h2 class="m-4 text-center">Noviembre 2025</h2>
+                            <div><h2 id="mes" class="m-4 text-center"></h2> <h2 id="anioActual" class="m-4 text-center">2025</h2></div>
+                            
 
                             <a href="#" class="text-primary">
-                                <i class="bi bi-arrow-right"></i>
+                                <i id="flechaDer" class="bi bi-arrow-right"></i>
                             </a>   
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center mb-4 text-center mx-3">
                             <div>
-                                <button class="btn rounded-circle p-3 text-white circuloFecha">23</button>
+                                <button id="fechaDomingo" class="btn rounded-circle p-3 text-white circuloFecha"></button>
                                 <div class="col rounded m-4 fs-3 text-primary">D</div>
                             </div>
 
                             <div>            
-                                <button class="btn rounded-circle p-3 text-white circuloFecha">24</button>
+                                <button id="fechaLunes" class="btn rounded-circle p-3 text-white circuloFecha"></button>
                                 <div class="col rounded m-4 fs-3 text-primary">L</div>
                             </div>
 
                             <div>
-                                <button class="btn rounded-circle p-3 text-white circuloFecha">25</button>
+                                <button id="fechaMartes" class="btn rounded-circle p-3 text-white circuloFecha"></button>
                                 <div class="col rounded m-4 fs-3 text-primary">M</div>
                             </div>
 
                             <div>
-                                <button class="btn rounded-circle p-3 text-white circuloFecha">26</button>
+                                <button id="fechaMiercoles" class="btn rounded-circle p-3 text-white circuloFecha"></button>
                                 <div class="col rounded m-4 fs-3 text-primary">M</div>
                             </div>
                             
                             <div>
-                                <button class="btn rounded-circle p-3 text-white circuloFecha">27</button>
+                                <button id="fechaJueves" class="btn rounded-circle p-3 text-white circuloFecha"></button>
                                 <div class="col rounded m-4 fs-3 text-primary">J</div>
                             </div>
 
                             <div>
-                                <button class="btn rounded-circle p-3 text-white circuloFecha">28</button>
+                                <button id="fechaViernes" class="btn rounded-circle p-3 text-white circuloFecha"></button>
                                 <div class="col rounded m-4 fs-3 text-primary">V</div>
                             </div>
                                 
                             <div>
-                                <button class="btn rounded-circle p-3 text-white circuloFecha">29</button>
+                                <button id="fechaSabado" class="btn rounded-circle p-3 text-white circuloFecha"></button>
                                 <div class="col rounded m-4 fs-3 text-primary">S</div>
                             </div>
                         </div>
@@ -160,6 +160,7 @@
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
         <script src="cerrarSesion.js"></script>
-        <script src="agregarTareas.js"></script> 
+        <script src="agregarTareas.js"></script>
+        <script src="seteandoFechas.js" ></script>
     </body>
 </html>
