@@ -20,7 +20,42 @@ const users = [
         apellido:"Sanchez",
         correo:"aldanamariel005@gmail.com",
         password: "78910",
-        token:"aldi",
+        token:"aldi123",
+    },
+    {
+       nombre:"Micaela",
+       apellido:"Yanucci",
+       correo:"micaelayanucci@gmail.com",
+       password:"1234",
+       token:"mica123",
+    },
+    {
+       nombre:"Soledad",
+       apellido:"Franco",
+       correo:"soledadelisabethfranco@gmail.com",
+       password:"1234",
+       token:"sole123",
+    },
+    {
+       nombre:"Natasha",
+       apellido:"Garrido Rodas ",
+       correo:"natashagarridorodas@gmail.com",
+       password:"1234" ,
+       token:"nati123",
+    },
+    {
+        nombre:"Maria Jose",
+        apellido:"Fariña",
+        correo:"majofarina19@gmail.com",
+        password:"1234",
+        token:"majo123",
+    },
+    {
+        nombre:"Agustina",
+        apellido:"Rivoira",
+        correo:"agustinarivoira7@gmail.com",
+        password:"123",
+        token:"agus123",
     }
 ]
 
