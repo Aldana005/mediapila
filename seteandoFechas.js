@@ -78,6 +78,7 @@ function setearMes(mes) {
             mesActual.textContent = "Diciembre"
         break
     }
+    anioActual.textContent = anioSelec
 }
 
 // Asinacion día-fecha
@@ -166,35 +167,30 @@ function setearDias (diaSemana, dia, limiteMes, limiteMesAnterior) {
 
 
 
-let fDer = function adelantarSemana() {
+let adelantarSemana = function () {
     diaSelec += 7
-    console.log(limiteMesSelec)
     if (diaSelec > limiteMesSelec) {
-        diaSelec -= limiteMesSelec        
-        (mesSelec < 12)? mesSelec += 1 : (mesSelec = 1, anioSelec++)
-        limiteMesAnteriorS = limiteMesSelec
+        diaSelec -= limiteMesSelec;        
+        (mesSelec < 12)? mesSelec += 1 : (mesSelec = 1, anioSelec++);
+        limiteMesAnteriorS = limiteMesSelec;
         limiteMesSelec = sacarLimiteDias(mesSelec, anioSelec)
     }
     setearMes(mesSelec)
     setearDias(diaSemana, diaSelec, limiteMesSelec, limiteMesAnteriorS)
 }
-let fIzq = function retrocederSemana() {
-    console.log(diaSelec)
+let retrocederSemana = function () {
     diaSelec -= 7
-    console.log(mesSelec)
     if (diaSelec < 1) {
         (mesSelec > 1)? mesSelec -= 1 : (mesSelec = 12, anioSelec--)       
-        limiteMesSelec = sacarLimiteDias(mesSelec, anioSelec)
-        limiteMesAnteriorS = sacarLimiteDias(mesSelec, anioSelec)
-        diaSelec += limiteMesAnteriorS
+        limiteMesSelec = sacarLimiteDias(mesSelec, anioSelec)        
+        diaSelec += limiteMesSelec
     }
-    console.log(diaSelec, mesSelec, anioSelec, limiteMesSelec, limiteMesAnteriorS)
     setearMes(mesSelec)
     setearDias(diaSemana, diaSelec, limiteMesSelec, limiteMesAnteriorS)
 }
 
 
-flechaDer.addEventListener("click", fDer)
-flechaIzq.addEventListener("click", fIzq)
+flechaDer.addEventListener("click", adelantarSemana)
+flechaIzq.addEventListener("click", retrocederSemana)
 setearMes(mes)
 setearDias(diaSemana, dia, limiteMes, limiteMesAnterior)
