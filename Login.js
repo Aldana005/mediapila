@@ -1,7 +1,7 @@
 const imput_email = document.querySelector("#emailInput") 
 const imput_password = document.querySelector("#passwordInput")
 
-const error_message = document.querySelector("#error_message")
+const error_message = document.querySelector("#error_mensaje")
 
 
 const submit_button = document.querySelector("#btnIngresar")
@@ -98,7 +98,8 @@ submit_button.addEventListener('click', () => {
         error_message.style.color = "red";
 
         setTimeout(() => {
-            error_message.textContent==''
+            error_message.textContent=''
         },4000)
     }
 })
+
