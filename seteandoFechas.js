@@ -34,7 +34,7 @@ limiteMesAnteriorS = limiteMesAnterior
 // Declaracion de funciones
 
 function anioBisiesto (anio) {return (anio % 4 === 0 && anio % 100 !== 0) || (anio % 400 === 0)}
-function sacarLimiteDias(mes,anio) {if (mesesTreinta.includes(mes)) {limiteDias = 30} else if (mesesTreintant.includes(mes)) {limiteDias = 31} else {if (anioActual.anioBisiesto(anio)) {limiteDias = 29} else {limiteDias = 28}} return limiteDias}
+function sacarLimiteDias(mes,anio) {if (mesesTreinta.includes(mes)) {limiteDias = 30} else if (mesesTreintant.includes(mes)) {limiteDias = 31} else {if (anioBisiesto(anio)) {limiteDias = 29} else {limiteDias = 28}} return limiteDias}
 
 
 
