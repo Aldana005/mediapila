@@ -1,7 +1,7 @@
 const imput_email = document.querySelector("#emailInput") 
 const imput_password = document.querySelector("#passwordInput")
 
-const error_message = document.querySelector("#error_message")
+const error_message = document.querySelector("#error_mensaje")
 
 const submit_button = document.querySelector("#btnIngresar")
 
@@ -133,4 +133,5 @@ submit_button.addEventListener('click', () => {
         },4000)
     }
 })
+
 
