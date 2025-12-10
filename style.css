@@ -200,3 +200,63 @@ TITULAR IRUPÉ (animado)
     color: black !important;
     font-weight: 600;
 }
+/*responsive*/
+@media (max-width: 768px) {
+
+    /* ajustes index */
+    .titulo-irupe {
+        font-size: 1.2em; 
+    }
+
+    
+    .btn-posicion-mobile {
+        position: static !important; 
+        margin: 20px auto !important; /* centrado */
+        width: 80%; /* boton ancho */
+        justify-content: center;
+    }
+
+    /*ajustes de la app */
+    
+    .sidebar-responsive {
+        min-height: auto !important; 
+        margin-bottom: 20px;
+    }
+
+    
+    .agregar-tarea {
+        margin-top: 15px;
+        justify-content: center;
+    }
+
+    /* ajustes calendario */
+    
+    .circuloFecha {
+        padding: 10px !important; 
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-width: 4px !important; 
+    }
+
+    /*achicar letras*/
+    .dia-letra {
+        margin: 5px !important; 
+        font-size: 1rem !important; 
+    }
+    
+   
+    .bi-arrow-left, .bi-arrow-right {
+        font-size: 1.5rem;
+    }
+    
+   
+    .contenedor-dias {
+        overflow-x: auto; 
+        padding-bottom: 10px;
+    }
+}
+
