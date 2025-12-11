@@ -194,3 +194,29 @@ flechaDer.addEventListener("click", adelantarSemana)
 flechaIzq.addEventListener("click", retrocederSemana)
 setearMes(mes)
 setearDias(diaSemana, dia, limiteMes, limiteMesAnterior)
+resaltarDiaHoy();
+
+/*resalta el dia de hoy automaticamente */
+
+function resaltarDiaHoy () {
+    const botones = [
+        fechaDomingo,
+        fechaLunes,
+        fechaMartes,
+        fechaMiercoles,
+        fechaJueves,
+        fechaViernes,
+        fechaSabado
+    ];
+
+    botones.forEach(btn => btn.classList.remove('dia-seleccionado'));
+
+    botones.forEach(btn => {
+        if (btn.textContent == dia) {
+            btn.classList.add('dia-seleccionado');
+            fechaSelec = new Date(anio, mes - 1, dia );
+        }
+
+    });
+}
+
