@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputNombre = document.querySelector("#tareaNombre");
     const inputFecha = document.querySelector("#tareaFecha");
     const selectPrioridad = document.querySelector("#tareaPrioridad");
-
     const btnGuardar = document.querySelector("#btnGuardarTarea");
 
     btnGuardar.addEventListener("click", function () {
@@ -24,22 +23,22 @@ document.addEventListener("DOMContentLoaded", () => {
             prioridad
         };
 
-        tareas.push(nuevaTareaObj);// Agrego al array
-        tareas.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));  // Ordeno por fecha
-        guardarTareasUsuario(); //Guardo
-        renderizarTarea(nuevaTareaObj); //Renderizo solo la nueva tarea
-        pintarDiaCalendario(nuevaTareaObj);
+        tareas.push(nuevaTareaObj);
+        tareas.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+        guardarTareasUsuario();
 
-        //Limpio el formulario
-        inputNombre.value = ""; 
+        // Redibuja la lista ORDENADA
+        renderizarListaCompleta();
+        // Vuelve a pintar los colores del calendario
+        actualizarColoresSemana();
+
+        inputNombre.value = "";
         inputFecha.value = "";
 
         document.querySelector(".btn-close").click();
     });
 
 });
-
-
 
 
 
