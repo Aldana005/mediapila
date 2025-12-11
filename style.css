@@ -260,3 +260,11 @@ TITULAR IRUPÉ (animado)
     }
 }
 
+/* Agus, resaltar el dia de hoy */
+
+.dia-seleccionado {
+    background-color: red !important;
+    color: white !important;
+    border: 2px solid white !important;
+}
+
