@@ -20,7 +20,7 @@ const users = [
         nombre: "Aldana",
         apellido: "Sánchez",
         correo: "aldanamariel005@correo.com",
-        password: "grupo6.1",
+        password: "1234",
         token: "ald123",
     },
     {
@@ -135,5 +135,6 @@ submit_button.addEventListener('click', () => {
         },4000)
     }
 })
+
 
 
