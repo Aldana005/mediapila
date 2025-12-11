@@ -1,7 +1,7 @@
 const imput_email = document.querySelector("#emailInput") 
 const imput_password = document.querySelector("#passwordInput")
 
-const error_message = document.querySelector("#error_mensaje")
+const error_message = document.querySelector("#error_message")
 
 const submit_button = document.querySelector("#btnIngresar")
 
@@ -20,7 +20,7 @@ const users = [
         nombre: "Aldana",
         apellido: "Sánchez",
         correo: "aldanamariel005@correo.com",
-        password: "1234",
+        password: "grupo6.1",
         token: "ald123",
     },
     {
@@ -119,7 +119,9 @@ submit_button.addEventListener('click', () => {
 
     if( queryUser && queryUser.password === password ){
 
-        localStorage.setItem('irupeApp', queryUser.token)
+        localStorage.setItem("usuarioLogueado", JSON.stringify(queryUser));
+        localStorage.setItem("irupeApp", queryUser.token);
+
 
         window.location.href = "app.html";
 
@@ -133,5 +135,4 @@ submit_button.addEventListener('click', () => {
         },4000)
     }
 })
-
 
