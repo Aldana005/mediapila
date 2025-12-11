@@ -16,7 +16,8 @@ if (!tareas) {
     tareas = tareasMock;  // Si no hay tareas creadas, aparecen las de mock Data
 }
 
-tareas.sort((a,b) => new Date(a.fecha) - new Date(b.fecha))// ordena las tareas por fechas Antes de mostrarlas
+// ordena las tareas por fechas Antes de mostrarlas
+tareas.sort((a,b) => new Date(a.fecha) - new Date(b.fecha))
 
 
 // ------ Guardar tareas del usuario en localStorage
@@ -24,31 +25,13 @@ function guardarTareasUsuario() {
     localStorage.setItem(`tareas_${usuario.token}`, JSON.stringify(tareas));
 }
 
-//------ Inserta tarjeta en el orden correcto segun su fecha 
-function insertarTareaEnOrden(div, tarea) {
-
+function renderizarListaCompleta() {
     const contenedor = document.querySelector("#contenedorTareas");
-    const tarjetas = contenedor.children;
+    contenedor.innerHTML = "";
 
-    const fechaNueva = new Date(tarea.fecha);
-
-    for (let tarjeta of tarjetas) {
-
-        const idTarjeta = tarjeta.dataset.id;
-        const tareaExistente = tareas.find(t => t.id == idTarjeta);
-
-        const fechaExistente = new Date(tareaExistente.fecha);
-
-        // Si la nueva tarea ocurre antes => va antes
-        if (fechaNueva < fechaExistente) {
-            contenedor.insertBefore(div, tarjeta);
-            return;
-        }
-    }
-
-    // Si no va antes que ninguna => va al final
-    contenedor.appendChild(div);
+    tareas.forEach(tarea => renderizarTarea(tarea));
 } 
+
 
 //------ Eliminar tarea 
 function eliminarTarea(id) {
@@ -61,17 +44,14 @@ function eliminarTarea(id) {
     // Eliminar del DOM
     const tarjeta = document.querySelector(`[data-id="${id}"]`);
     if (tarjeta) tarjeta.remove();
+
+    actualizarColoresSemana();
 }
 
 
-//------ Renderizar todo al iniciar la app
-tareas.forEach(tarea => {
-    renderizarTarea(tarea); 
-    pintarDiaCalendario(tarea);// Colorea el dia correspondiente
-});
-
 
 function renderizarTarea(tarea) {//recibe un objeto "tarea" y construye visualmente la tarjeta que se muestra en la lista de tareas. También agrega los eventos de editar y eliminar
+
     const contenedor = document.querySelector("#contenedorTareas");
 
     const div = document.createElement("div");// div principal que va a envolver la tarjeta completa
@@ -181,14 +161,17 @@ function pintarDiaCalendario(tarea) {
 function actualizarColoresSemana() {
     const circulos = document.querySelectorAll(".circuloFecha");
 
-    // 1) Limpiar colores anteriores
+    // Limpiar colores anteriores
     circulos.forEach(circulo => {
         circulo.classList.remove("bg-danger", "bg-warning", "bg-success", "text-white");
     });
 
-    // 2) Volver a pintar según TODAS las tareas
+    // Volver a pintar según TODAS las tareas
     tareas.forEach(tarea => {
         pintarDiaCalendario(tarea);
     });
 }
+
+renderizarListaCompleta();
+actualizarColoresSemana();
 
