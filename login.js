@@ -68,34 +68,34 @@ const users = [
 ]
 
 
-init()
-
+// ---------- CONTROL DE ACCESO ----------
 function init() {
-    const loggedUser = localStorage.getItem('irupeApp') 
+
+    const token = localStorage.getItem("irupeApp");
     const path = window.location.pathname;
-    
-    //Si esta logueado
-    if( loggedUser ) {
-        // si está en login o index -> lo lleva a "app" automáticamente
+
+    // === Usuario logueado ===
+    if (token) {
+
+        // Si está en login o index → enviarlo a la app
         if (path.includes("login") || path.includes("index")) {
             window.location.href = "app.html";
         }
-        return; // si está en app, puede quedarse.
+        return; // si está en app.html lo dejamos
     }
 
-    
-    // Si NO está logueado puede entrar a index tranquilo.
-    if (path.includes("index")) return;
+    // === Usuario NO logueado ===
 
-    // si intenta ir a app sin login lo saco.
+    // Puede entrar a index y login sin problemas
+    if (path.includes("index") || path.includes("login")) return;
+
+    // Pero si intenta acceder a app.html → lo saco
     if (path.includes("app")) {
         window.location.href = "login.html";
-        return;
     }
-
-    // si está en login lo dejo.
-    if (path.includes("login")) return;
 }
+
+init();
 
 
 
@@ -135,4 +135,5 @@ submit_button.addEventListener('click', () => {
         },4000)
     }
 })
+
 
