@@ -10,6 +10,8 @@ const flechaIzq = document.querySelector("#flechaIzq"),
     fechaSabado = document.querySelector("#fechaSabado"),
     mesActual = document.querySelector("#mes"),
     anioActual = document.querySelector("#anioActual"),
+    menuMeses = document.querySelector("#menuMeses"),
+    menuAnios = document.querySelector("#menuAnios"),
     mesesTreinta = [11, 4, 6, 9],
     mesesTreintant = [1, 3, 5, 7, 8, 10, 12],
     fecha = new Date(),
@@ -43,7 +45,7 @@ function sacarLimiteDias(mes, anio) {
 }
 
 
-//Asignación de Mes
+//Asignación de Mes y Año
 function setearMes(mes) {
     const nombres = [
         "", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
@@ -84,6 +86,78 @@ function setearDias(diaSemana, dia, limiteMes, limiteMesAnterior) {
 }
 
 
+// ----- Lógica para actualizar el calendario (Mes/Año)
+function actualizarCalendario(nuevoMes, nuevoAnio) {
+    if (nuevoMes) mesSelec = nuevoMes;
+    if (nuevoAnio) anioSelec = nuevoAnio;
+
+    // Recalcular límites del mes
+    limiteMesSelec = sacarLimiteDias(mesSelec, anioSelec);
+    // Limite del mes anterior para calcular días que caen en el mes anterior
+    limiteMesAnteriorS = sacarLimiteDias((mesSelec > 1) ? mesSelec - 1 : 12, (mesSelec > 1) ? anioSelec : anioSelec - 1); 
+
+    // Asegurar que el día seleccionado no exceda el límite del nuevo mes (ej. pasar de Marzo 31 a Febrero)
+    if (diaSelec > limiteMesSelec) {
+        diaSelec = limiteMesSelec;
+    }
+    
+    // Crear una nueva fecha para recalcular el día de la semana y obtener la semana correcta
+    const nuevaFecha = new Date(anioSelec, mesSelec - 1, diaSelec);
+    const nuevoDiaSemana = nuevaFecha.getDay();
+
+    // Actualizar la vista
+    setearMes(mesSelec);
+    setearDias(nuevoDiaSemana, diaSelec, limiteMesSelec, limiteMesAnteriorS);
+    
+    // Llamar a la función de app.js para repintar los colores, si existe
+    if (typeof actualizarColoresSemana === "function") actualizarColoresSemana();
+}
+
+
+// ----- Generar la lista de años en el dropdown
+function generarAnios() {
+    menuAnios.innerHTML = ""; // Limpiar antes de generar
+
+    const anioActual = new Date().getFullYear();
+    const rango = 5; // Mostrar 5 años anteriores y 5 años siguientes
+
+    for (let i = anioActual - rango; i <= anioActual + rango; i++) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.className = "dropdown-item";
+        a.href = "#";
+        a.textContent = i;
+        a.dataset.anio = i;
+        li.appendChild(a);
+        menuAnios.appendChild(li);
+    }
+}
+
+
+// ----- Agregar Event Listeners para la selección de Mes/Año
+function agregarListenersSelectorFecha() {
+    
+    // Listener para selección de MES
+    menuMeses.addEventListener("click", (e) => {
+        e.preventDefault();
+        const item = e.target.closest("a");
+        if (item && item.dataset.mes) {
+            const nuevoMes = parseInt(item.dataset.mes);
+            actualizarCalendario(nuevoMes, null);
+        }
+    });
+    
+    // Listener para selección de AÑO
+    menuAnios.addEventListener("click", (e) => {
+        e.preventDefault();
+        const item = e.target.closest("a");
+        if (item && item.dataset.anio) {
+            const nuevoAnio = parseInt(item.dataset.anio);
+            actualizarCalendario(null, nuevoAnio);
+        }
+    });
+}
+
 
 //----- BOTONES SEMANA SIG / ANT
 let adelantarSemana = function () {
@@ -114,6 +188,7 @@ let retrocederSemana = function () {
     if (diaSelec < 1) {
         (mesSelec > 1) ? mesSelec-- : (mesSelec = 12, anioSelec--);
         limiteMesSelec = sacarLimiteDias(mesSelec, anioSelec);
+        limiteMesAnteriorS = sacarLimiteDias((mesSelec > 1) ? mesSelec - 1 : 12, anioSelec);
         diaSelec += limiteMesSelec;
     }
 
@@ -130,8 +205,14 @@ flechaDer.addEventListener("click", adelantarSemana);
 flechaIzq.addEventListener("click", retrocederSemana);
 
 
+// Ejecución inicial:
 
-// Debés usar el día real de la fecha seleccionada.
+// Generar dinámicamente la lista de años
+generarAnios();
+// Agregar listeners a los selectores de mes y año
+agregarListenersSelectorFecha();
+
+// Establecer la vista inicial
 const fechaInicial = new Date(anioSelec, mesSelec - 1, diaSelec);
 const diaSemanaInicial = fechaInicial.getDay();
 

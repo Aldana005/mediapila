@@ -1,12 +1,7 @@
 const imput_email = document.querySelector("#emailInput") 
 const imput_password = document.querySelector("#passwordInput")
-
-const error_message = document.querySelector("#error_message")
-
+const error_message = document.querySelector("#error_mensaje")
 const submit_button = document.querySelector("#btnIngresar")
-
-
-
 
 const users = [
     {
@@ -67,40 +62,8 @@ const users = [
     }
 ]
 
-
-// ---------- CONTROL DE ACCESO ----------
-function init() {
-
-    const token = localStorage.getItem("irupeApp");
-    const path = window.location.pathname;
-
-    // === Usuario logueado ===
-    if (token) {
-
-        // Si está en login o index → enviarlo a la app
-        if (path.includes("login") || path.includes("index")) {
-            window.location.href = "app.html";
-        }
-        return; // si está en app.html lo dejamos
-    }
-
-    // === Usuario NO logueado ===
-
-    // Puede entrar a index y login sin problemas
-    if (path.includes("index") || path.includes("login")) return;
-
-    // Pero si intenta acceder a app.html → lo saco
-    if (path.includes("app")) {
-        window.location.href = "login.html";
-    }
-}
-
-init();
-
-
-
 submit_button.addEventListener('click', () => {
-    const email = imput_email.value.trim();//trim por si se pone algun espacio por error, lo corrige.
+    const email = imput_email.value.trim();
     const password = imput_password.value.trim(); 
 
     // Validación de campos vacíos
@@ -112,29 +75,25 @@ submit_button.addEventListener('click', () => {
             error_message.textContent = "";
         }, 3000);
 
-        return; // frena ejecución
+        return;
     }
 
-    const queryUser = users.find((users) => users.correo === email)
+    const queryUser = users.find((user) => user.correo === email)
 
-    if( queryUser && queryUser.password === password ){
-
+    if(queryUser && queryUser.password === password) {
+        // Guardar usuario en localStorage
         localStorage.setItem("usuarioLogueado", JSON.stringify(queryUser));
         localStorage.setItem("irupeApp", queryUser.token);
 
-
+        // Redirigir a la app
         window.location.href = "app.html";
 
-
-    }else{
+    } else {
         error_message.textContent = 'El usuario no existe o la contraseña es incorrecta';
         error_message.style.color = "red";
 
         setTimeout(() => {
             error_message.textContent = ''
-        },4000)
+        }, 4000)
     }
 })
-
-
-

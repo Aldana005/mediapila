@@ -1,16 +1,16 @@
-// Obtener al usuario logueado
-//JSON.parse(...) convierte ese texto en un objeto JS real
+// Obtener al usuario logueado (sin validación, eso lo hace app.html)
 const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
 
-if (!usuario) {
-    window.location.href = "login.html";
+// Mostrar el nombre del usuario en el botón
+const nombreUsuario = document.querySelector("#nombreUsuario");
+if (nombreUsuario && usuario) {
+    nombreUsuario.textContent = usuario.nombre;
 }
 
 let tareas = [];   
 
 // Cargar tareas del usuario desde el localStorage
 tareas = JSON.parse(localStorage.getItem(`tareas_${usuario.token}`));
-
 
 if (!tareas) {
     tareas = tareasMock;  // Si no hay tareas creadas, aparecen las de mock Data
@@ -19,8 +19,11 @@ if (!tareas) {
 // ordena las tareas por fechas Antes de mostrarlas
 tareas.sort((a,b) => new Date(a.fecha) - new Date(b.fecha))
 
+const filtroPrioridad = document.querySelector("#filtroPrioridad");
+const filtroFecha = document.querySelector("#filtroFecha");
+const btnLimpiar = document.querySelector("#btnLimpiarFiltros");
 
-// ------ Guardar tareas del usuario en localStorage
+//  Guardar tareas del usuario en localStorage
 function guardarTareasUsuario() {
     localStorage.setItem(`tareas_${usuario.token}`, JSON.stringify(tareas));
 }
@@ -29,9 +32,21 @@ function renderizarListaCompleta() {
     const contenedor = document.querySelector("#contenedorTareas");
     contenedor.innerHTML = "";
 
-    tareas.forEach(tarea => renderizarTarea(tarea));
-} 
+    const prioridadElegida = filtroPrioridad ? filtroPrioridad.value : "todas";
+    const fechaElegida = filtroFecha ? filtroFecha.value : "";
 
+    const tareasFiltradas = tareas.filter(tarea => {
+        const coincidePrioridad = (prioridadElegida === "todas") || (tarea.prioridad === prioridadElegida);
+        const coincideFecha = (fechaElegida === "") || (tarea.fecha === fechaElegida);
+        return coincidePrioridad && coincideFecha;
+    });
+
+    if (tareasFiltradas.length === 0) {
+        contenedor.innerHTML = '<div class="alert alert-secondary text-center mt-3">No hay tareas con estos filtros.</div>';
+    } else {
+        tareasFiltradas.forEach(tarea => renderizarTarea(tarea));
+    }
+}
 
 //------ Eliminar tarea 
 function eliminarTarea(id) {
@@ -48,94 +63,111 @@ function eliminarTarea(id) {
     actualizarColoresSemana();
 }
 
-
-
-function renderizarTarea(tarea) {//recibe un objeto "tarea" y construye visualmente la tarjeta que se muestra en la lista de tareas. También agrega los eventos de editar y eliminar
-
+function renderizarTarea(tarea) {
     const contenedor = document.querySelector("#contenedorTareas");
-
-    const div = document.createElement("div");// div principal que va a envolver la tarjeta completa
+    const div = document.createElement("div");
     div.classList.add("col-12", "mb-3");
-    div.dataset.id = tarea.id; // importante para identificar la tarjeta
+    div.dataset.id = tarea.id;
 
-    // Inserto la estructura HTML de la tarjeta
-    div.innerHTML = `
-        <div class="card border-${tarea.prioridad === "alta" ? "danger" : tarea.prioridad === "media" ? "warning" : "success"} shadow-sm">
-            <div class="card-body d-flex justify-content-between align-items-center">
+    let colorBorde = "";
 
-                <div>
-                    <h5 class="card-title fw-bold">${tarea.nombre}</h5>
-                    <p class="card-text text-muted mb-0">
-                        <i class="bi bi-calendar-event"></i> ${tarea.fecha}
-                    </p>
-                </div>
+    if (tarea.prioridad === "alta") {
+        colorBorde = "danger"; 
+    } else if (tarea.prioridad === "media") {
+        colorBorde = "warning"; 
+    } else {
+        colorBorde = "success"; 
+    }
 
-                <!-- Parte derecha: prioridad y botones -->
-                <div class="d-flex align-items-center gap-2">
+    div.innerHTML = 
+        '<div class="card border-3 border-' + colorBorde + ' shadow-sm">' +
+            '<div class="card-body d-flex justify-content-between align-items-center">' +
+                
+                '<div>' +
+                    '<h5 class="card-title fw-bold">' + tarea.nombre + '</h5>' +
+                    '<p class="card-text text-muted mb-0">' +
+                        '<i class="bi bi-calendar-event"></i> ' + tarea.fecha +
+                    '</p>' +
+                '</div>' +
 
-                    <span class="badge rounded-pill bg-secondary text-uppercase">
-                        ${tarea.prioridad}
-                    </span>
+                '<div class="d-flex align-items-center gap-2">' +
+                    '<span class="badge rounded-pill bg-secondary text-uppercase">' + tarea.prioridad + '</span>' +
+                    
+                    // Botón Realizada
+                    '<button class="btn btn-outline-success btn-sm btn-realizada" title="Marcar como realizada">' +
+                        '<i class="bi bi-check-lg"></i>' +
+                    '</button>' +
+                    
+                    // Botón Editar
+                    '<button class="btn btn-outline-primary btn-sm btn-editar"><i class="bi bi-pencil-fill"></i></button>' +
+                    
+                    // Botón Eliminar
+                    '<button class="btn btn-outline-danger btn-sm btn-eliminar"><i class="bi bi-trash-fill"></i></button>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
 
-                    <!-- Botón para editar -->
-                    <button class="btn btn-outline-primary btn-sm btn-editar">
-                        <i class="bi bi-pencil-fill"></i>
-                    </button>
+    
+    
+    // Botón Realizada
+    const btnRealizada = div.querySelector(".btn-realizada");
+    const tarjeta = div.querySelector(".card");
+    const icono = btnRealizada.querySelector("i");
 
-                    <!-- Botón para eliminar -->
-                    <button class="btn btn-outline-danger btn-sm btn-eliminar">
-                        <i class="bi bi-trash-fill"></i>
-                    </button>
+    btnRealizada.addEventListener("click", function() {
+        tarjeta.classList.toggle("tarea-realizada");
+        
+        // Cambiar estilo del boton 
+        if (btnRealizada.classList.contains("btn-outline-success")) {
+            btnRealizada.classList.remove("btn-outline-success");
+            btnRealizada.classList.add("btn-success");
+        } else {
+            btnRealizada.classList.add("btn-outline-success");
+            btnRealizada.classList.remove("btn-success");
+        }
 
-                </div>
+        // Cambiar icono
+        if (tarjeta.classList.contains("tarea-realizada")) {
+            icono.classList.remove("bi-check-lg");
+            icono.classList.add("bi-arrow-repeat");
+        } else {
+            icono.classList.remove("bi-arrow-repeat");
+            icono.classList.add("bi-check-lg");
+        }
+    });
 
-            </div>
-        </div>
-    `;
-
-    // ELIMINAR TAREA
+    // Botón Eliminar
     div.querySelector(".btn-eliminar").addEventListener("click", function () {
         if (confirm("¿Seguro que querés eliminar la tarea?")) {
             eliminarTarea(tarea.id);
         }
     });
 
-    
-    // EDITAR TAREA
+    // Botón Editar
     div.querySelector(".btn-editar").addEventListener("click", function () {
-
-        // cargar datos en inputs
         document.querySelector("#tareaNombre").value = tarea.nombre;
         document.querySelector("#tareaFecha").value = tarea.fecha;
         document.querySelector("#tareaPrioridad").value = tarea.prioridad;
-
-        // abrir modal
         document.querySelector('[data-bs-target="#modalTarea"]').click();
-
-        // eliminar la tarea original para reemplazarla al guardar
-        eliminarTarea(tarea.id);
+        eliminarTarea(tarea.id); 
     });
 
-    // Finalmente agrego la tarjeta construida al contenedor de tareas
     contenedor.appendChild(div);
 }
 
-
-// Colorea el número del día dependiendo de si la prioridad es alta, media o baja.
 function pintarDiaCalendario(tarea) {
-
     const partes = tarea.fecha.split("-");
+    const anioTarea = parseInt(partes[0]);
+    const mesTarea = parseInt(partes[1]);
     const diaTarea = parseInt(partes[2]);
 
     const circulos = document.querySelectorAll(".circuloFecha");
 
     circulos.forEach(circulo => {
-
-        // EXTRAER SOLO EL NÚMERO REAL DEL CÍRCULO
-        const diaCalendario = Number(circulo.innerHTML.trim());
-
-        if (diaCalendario === diaTarea) {
-
+        const diaCalendario = Number(circulo.textContent.trim());
+        
+        // Verificar que coincidan día, mes Y año
+        if (diaCalendario === diaTarea && mesSelec === mesTarea && anioSelec === anioTarea) {
             circulo.classList.add("text-white");
 
             if (tarea.prioridad === "alta") {
@@ -175,3 +207,13 @@ function actualizarColoresSemana() {
 renderizarListaCompleta();
 actualizarColoresSemana();
 
+if (filtroPrioridad) filtroPrioridad.addEventListener("change", renderizarListaCompleta);
+if (filtroFecha) filtroFecha.addEventListener("change", renderizarListaCompleta);
+
+if (btnLimpiar) {
+    btnLimpiar.addEventListener("click", () => {
+        filtroPrioridad.value = "todas";
+        filtroFecha.value = "";
+        renderizarListaCompleta();
+    });
+}

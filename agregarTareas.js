@@ -27,6 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
         tareas.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
         guardarTareasUsuario();
 
+        if(document.querySelector("#filtroPrioridad")) document.querySelector("#filtroPrioridad").value = "todas";
+        if(document.querySelector("#filtroFecha")) document.querySelector("#filtroFecha").value = "";
+
         // Redibuja la lista ORDENADA
         renderizarListaCompleta();
         // Vuelve a pintar los colores del calendario
@@ -39,6 +42,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
-
-
-
