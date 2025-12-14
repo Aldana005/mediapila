@@ -1,3 +1,10 @@
+// bloquear acceso directo a la app //
+
+const token = localStorage.getItem("irupeApp");
+if (!token) {
+    window.location.href = "login.html";
+}
+
 // Obtener al usuario logueado (sin validación, eso lo hace app.html)
 const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
 
@@ -216,4 +223,5 @@ if (btnLimpiar) {
         filtroFecha.value = "";
         renderizarListaCompleta();
     });
+
 }
