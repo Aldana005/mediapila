@@ -121,27 +121,27 @@ function renderizarTarea(tarea) {
     const tarjeta = div.querySelector(".card");
     const icono = btnRealizada.querySelector("i");
 
-    btnRealizada.addEventListener("click", function() {
-        tarjeta.classList.toggle("tarea-realizada");
-        
-        // Cambiar estilo del boton 
-        if (btnRealizada.classList.contains("btn-outline-success")) {
-            btnRealizada.classList.remove("btn-outline-success");
-            btnRealizada.classList.add("btn-success");
-        } else {
-            btnRealizada.classList.add("btn-outline-success");
-            btnRealizada.classList.remove("btn-success");
-        }
+        // 👉 PASO 3A: reflejar estado realizada al renderizar
+    if (tarea.realizada) {
+        tarjeta.classList.add("tarea-realizada");
 
-        // Cambiar icono
-        if (tarjeta.classList.contains("tarea-realizada")) {
-            icono.classList.remove("bi-check-lg");
-            icono.classList.add("bi-arrow-repeat");
-        } else {
-            icono.classList.remove("bi-arrow-repeat");
-            icono.classList.add("bi-check-lg");
-        }
+        btnRealizada.classList.remove("btn-outline-success");
+        btnRealizada.classList.add("btn-success");
+
+        icono.classList.remove("bi-check-lg");
+        icono.classList.add("bi-arrow-repeat");
+    }
+
+
+        // 👉 PASO 3B: cambiar estado real de la tarea
+    btnRealizada.addEventListener("click", function () {
+        tarea.realizada = !tarea.realizada;
+
+        guardarTareasUsuario();
+        renderizarListaCompleta();
+        actualizarColoresSemana();
     });
+
 
     // Botón Eliminar
     div.querySelector(".btn-eliminar").addEventListener("click", function () {
