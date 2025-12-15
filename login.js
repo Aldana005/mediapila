@@ -1,5 +1,5 @@
-const imput_email = document.querySelector("#emailInput") 
-const imput_password = document.querySelector("#passwordInput")
+const input_email = document.querySelector("#emailInput") 
+const input_password = document.querySelector("#passwordInput")
 const error_message = document.querySelector("#error_mensaje")
 const submit_button = document.querySelector("#btnIngresar")
 
@@ -61,10 +61,19 @@ const users = [
         token: "cata123",
     }
 ]
+function init() {
+    const token = localStorage.getItem("irupeApp");
+    if (token) {
+        // Si hay token, no tiene nada que hacer en login, lo mandamos a la app
+        window.location.href = "app.html";
+    }
+}
+init();
 
-submit_button.addEventListener('click', () => {
-    const email = imput_email.value.trim();
-    const password = imput_password.value.trim(); 
+submit_button.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = input_email.value.trim();
+    const password = input_password.value.trim(); 
 
     // Validación de campos vacíos
     if (!email || !password) {

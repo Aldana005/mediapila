@@ -111,6 +111,7 @@ function actualizarCalendario(nuevoMes, nuevoAnio) {
     
     // Llamar a la función de app.js para repintar los colores, si existe
     if (typeof actualizarColoresSemana === "function") actualizarColoresSemana();
+    
 }
 
 
@@ -178,6 +179,7 @@ let adelantarSemana = function () {
     setearDias(nuevoDiaSemana, diaSelec, limiteMesSelec, limiteMesAnteriorS);
 
     if (typeof actualizarColoresSemana === "function") actualizarColoresSemana();
+    
 };
 
 
@@ -199,6 +201,7 @@ let retrocederSemana = function () {
     setearDias(nuevoDiaSemana, diaSelec, limiteMesSelec, limiteMesAnteriorS);
 
     if (typeof actualizarColoresSemana === "function") actualizarColoresSemana();
+    
 };
 
 flechaDer.addEventListener("click", adelantarSemana);
@@ -218,3 +221,4 @@ const diaSemanaInicial = fechaInicial.getDay();
 
 setearMes(mesSelec);
 setearDias(diaSemanaInicial, diaSelec, limiteMes, limiteMesAnterior);
+
