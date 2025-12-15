@@ -42,11 +42,26 @@ function renderizarListaCompleta() {
     const prioridadElegida = filtroPrioridad ? filtroPrioridad.value : "todas";
     const fechaElegida = filtroFecha ? filtroFecha.value : "";
 
-    const tareasFiltradas = tareas.filter(tarea => {
-        const coincidePrioridad = (prioridadElegida === "todas") || (tarea.prioridad === prioridadElegida);
-        const coincideFecha = (fechaElegida === "") || (tarea.fecha === fechaElegida);
+    const tareasFiltradas = tareas
+    // 1️⃣ Si NO hay fecha elegida → mostrar solo tareas NO realizadas
+    .filter(tarea => {
+        if (fechaElegida === "") {
+            return !tarea.realizada;
+        }
+        // Si hay fecha elegida → mostrar todas (realizadas y no)
+        return true;
+    })
+    // 2️⃣ Aplicar filtros de prioridad y fecha
+    .filter(tarea => {
+        const coincidePrioridad =
+            (prioridadElegida === "todas") || (tarea.prioridad === prioridadElegida);
+
+        const coincideFecha =
+            (fechaElegida === "") || (tarea.fecha === fechaElegida);
+
         return coincidePrioridad && coincideFecha;
     });
+
 
     if (tareasFiltradas.length === 0) {
         contenedor.innerHTML = '<div class="alert alert-secondary text-center mt-3">No hay tareas con estos filtros.</div>';
