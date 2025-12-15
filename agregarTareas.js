@@ -20,8 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
             id: Date.now(),
             nombre,
             fecha,
-            prioridad
+            prioridad,
+            realizada: false
         };
+
 
         tareas.push(nuevaTareaObj);
         tareas.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
