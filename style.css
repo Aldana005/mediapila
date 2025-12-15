@@ -1,6 +1,4 @@
-/* =========================================================
-   VARIABLES DE COLOR - TEMA LILA Y NEGRO
-========================================================= */
+/*   VARIABLES DE COLOR - TEMA LILA Y NEGRO */
 :root {
     --bs-primary: #a685e2;
     --bs-primary-rgb: 166, 133, 226;
@@ -8,9 +6,7 @@
     --bs-link-hover-color: #c7b0f0;
 }
 
-/* =========================================================
-   ESTILOS GENERALES DEL BODY
-========================================================= */
+/* ESTILOS GENERALES DEL BODY */
 body {
     background-color: #0d0d0d;
     color: white;
@@ -24,9 +20,7 @@ body {
     to { opacity: 1; }
 }
 
-/* =========================================================
-   TÍTULO IRUPÉ CON ANIMACIÓN
-========================================================= */
+/*  TÍTULO IRUPÉ CON ANIMACIÓN */
 .titulo-irupe {
     color: transparent;
     -webkit-text-stroke: 2px #ae00ff;
@@ -111,11 +105,7 @@ body {
 }
 
 
-
-
-/* =========================================================
-   BOTÓN "COMENZAR" DE LA LANDING PAGE
-========================================================= */
+/* BOTÓN "COMENZAR" DE LA LANDING PAGE */
 .btn-comenzar {
     background-color: #bfbfbf;
     color: #6a4fb9;
@@ -130,9 +120,7 @@ body {
     box-shadow: 0 0 15px #ffffff55;
 }
 
-/* =========================================================
-   BOTONES LILAS (LOGIN Y MODALES)
-========================================================= */
+/*    BOTONES LILAS (LOGIN Y MODALES) */
 .btn-lila {
     background-color: #271a3d;
     border-color: #a874ff;
@@ -145,18 +133,14 @@ body {
     color: white;
 }
 
-/* =========================================================
-   SIDEBAR - FONDO OSCURO
-========================================================= */
+/*   SIDEBAR - FONDO OSCURO */
 .fondoSecciones {
     background-color: #1e1e1e !important;
     box-shadow: none !important;
     border-radius: 8px;
 }
 
-/* =========================================================
-   BOTÓN DE USUARIO (SIDEBAR)
-========================================================= */
+/*  BOTÓN DE USUARIO (SIDEBAR) */
 .dropdown {
     width: 100%;
 }
@@ -178,9 +162,7 @@ body {
     background-color: #c7b0f0 !important;
 }
 
-/* =========================================================
-   DROPDOWN "CERRAR SESIÓN"
-========================================================= */
+/*  DROPDOWN "CERRAR SESIÓN" */
 .dropdown-menu {
     padding: 0;
     background-color: #1e1e1e !important;
@@ -199,9 +181,7 @@ body {
     color: white !important;
 }
 
-/* =========================================================
-   BOTÓN "AGREGAR TAREA" DEL SIDEBAR
-========================================================= */
+/* BOTÓN "AGREGAR TAREA" DEL SIDEBAR */
 .agregar-tarea {
     display: flex;
     align-items: center;
@@ -231,11 +211,9 @@ body {
 }
 
 
-/* =========================================================
-   CÍRCULOS DE FECHAS EN EL CALENDARIO
+/*    CÍRCULOS DE FECHAS EN EL CALENDARIO
    - Borde lila por defecto
-   - Borde de color según prioridad de tareas
-========================================================= */
+   - Borde de color según prioridad de tareas */
 .circuloFecha {
     background-color: #3a3a3a;
     color: white;
@@ -269,9 +247,7 @@ body {
     border-color: #198754 !important;
 }
 
-/* =========================================================
-   MODAL PERSONALIZADO (AGREGAR/EDITAR TAREA)
-========================================================= */
+/*  MODAL PERSONALIZADO (AGREGAR/EDITAR TAREA) */
 .modal-custom {
     background-color: #c7a9e3 !important;
     border: 3px solid black !important;
@@ -290,9 +266,7 @@ body {
     font-weight: 600;
 }
 
-/* =========================================================
-   DISEÑO RESPONSIVE
-========================================================= */
+/*   DISEÑO RESPONSIVE */
 @media (max-width: 768px) {
     
     /* Título más pequeño en móviles */
@@ -346,9 +320,7 @@ body {
         padding-bottom: 10px;
     }
 }
-/* =========================================
-   ESTILOS TAREA REALIZADA
-========================================= */
+/*    ESTILOS TAREA REALIZADA */
 /* Tachar el título y el texto */
 .tarea-realizada .card-title, 
 .tarea-realizada .card-text {
@@ -362,4 +334,5 @@ body {
     opacity: 0.8; /* Se ve un poco más transparente */
     background-color: #2b2b2b; /* Un fondo un poco más oscuro (opcional) */
 }
+
 
