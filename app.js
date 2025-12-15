@@ -43,12 +43,12 @@ function renderizarListaCompleta() {
     const fechaElegida = filtroFecha ? filtroFecha.value : "";
 
     const tareasFiltradas = tareas
-    //  Si NO hay fecha elegida → mostrar solo tareas NO realizadas
+    //  Si NO hay fecha elegida -> mostrar solo tareas NO realizadas
     .filter(tarea => {
         if (fechaElegida === "") {
             return !tarea.realizada;
         }
-        // Si hay fecha elegida → mostrar todas (realizadas y no)
+        // Si hay fecha elegida -> mostrar todas (realizadas y no)
         return true;
     })
     //  Aplicar filtros de prioridad y fecha
@@ -240,4 +240,5 @@ if (btnLimpiar) {
     });
 
 }
+
 
