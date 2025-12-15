@@ -43,7 +43,7 @@ function renderizarListaCompleta() {
     const fechaElegida = filtroFecha ? filtroFecha.value : "";
 
     const tareasFiltradas = tareas
-    // 1️⃣ Si NO hay fecha elegida → mostrar solo tareas NO realizadas
+    //  Si NO hay fecha elegida → mostrar solo tareas NO realizadas
     .filter(tarea => {
         if (fechaElegida === "") {
             return !tarea.realizada;
@@ -51,7 +51,7 @@ function renderizarListaCompleta() {
         // Si hay fecha elegida → mostrar todas (realizadas y no)
         return true;
     })
-    // 2️⃣ Aplicar filtros de prioridad y fecha
+    //  Aplicar filtros de prioridad y fecha
     .filter(tarea => {
         const coincidePrioridad =
             (prioridadElegida === "todas") || (tarea.prioridad === prioridadElegida);
@@ -136,7 +136,7 @@ function renderizarTarea(tarea) {
     const tarjeta = div.querySelector(".card");
     const icono = btnRealizada.querySelector("i");
 
-        // 👉 PASO 3A: reflejar estado realizada al renderizar
+        // reflejar estado realizada al renderizar
     if (tarea.realizada) {
         tarjeta.classList.add("tarea-realizada");
 
@@ -148,7 +148,7 @@ function renderizarTarea(tarea) {
     }
 
 
-        // 👉 PASO 3B: cambiar estado real de la tarea
+        // cambiar estado real de la tarea
     btnRealizada.addEventListener("click", function () {
         tarea.realizada = !tarea.realizada;
 
@@ -240,3 +240,4 @@ if (btnLimpiar) {
     });
 
 }
+
