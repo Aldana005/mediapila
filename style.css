@@ -212,8 +212,8 @@ body {
 
 
 /*    CÍRCULOS DE FECHAS EN EL CALENDARIO
-   - Borde lila por defecto
-   - Borde de color según prioridad de tareas */
+    - Borde lila por defecto
+    - Borde de color según prioridad de tareas */
 .circuloFecha {
     background-color: #3a3a3a;
     color: white;
@@ -334,5 +334,6 @@ body {
     opacity: 0.8; /* Se ve un poco más transparente */
     background-color: #2b2b2b; /* Un fondo un poco más oscuro (opcional) */
 }
+
 
 
