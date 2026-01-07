@@ -1,4 +1,4 @@
-IRUPE | Task Management System
+IRUPE | 
 Irupé es una solución web de productividad diseñada para optimizar la organización personal mediante un sistema de gestión de tareas integrado con una visualización de calendario interactiva.
 
 Nota de Transparencia: Este proyecto es el resultado de un desarrollo colaborativo (Fork) realizado en el marco académico.
